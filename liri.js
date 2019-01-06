@@ -3,7 +3,7 @@ require("dotenv").config();
 var keys = require("./keys.js");
 
 var Spotify = require('node-spotify-api');
-var moment = require ('moment');
+var moment = require('moment');
 
 var spotify = new Spotify(keys.spotify);
 
@@ -27,20 +27,44 @@ var finalInput = array.join(" ");
 
 
 //Spotify - create a function to collect information from Spotify
+var Spotify = function () {
 
-// spotify
-// .search({ type: 'track', query: input, limit: 1 })
-// .then(function(response) {
-//   console.log(response);
-// })
-// .catch(function(err) {
-//   console.log(err);
-// });
+  if(finalInput === ""){
+    finalInput = "The Sign Ace of Base";
+  }
 
+  spotify
+    .search({
+      type: 'track',
+      query: finalInput,
+      limit: 1
+    })
+    .then(function (response) {
+      // console.log(response);
+      // console.log(response.tracks.items);
+      console.log("\n")
+      console.log("\n-----------SONG INFO----------------\n")
+      for (var i = 0; i < response.tracks.items.length; i++) {
+        // console.log(response.tracks.items[i].album);
+        for (var j = 0; j < response.tracks.items[i].artists.length; j++)
+        console.log("Artist: " + response.tracks.items[i].artists[j].name); //Artist name
+        console.log("Song name: " + response.tracks.items[i].name);//Song name
+        console.log("Preview of Song: " + response.tracks.items[i].preview_url);//Preview of song
+        console.log("Album name: " + response.tracks.items[i].album.name);//Album name      
+      }
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+
+}
 
 //OMDB - create a function to get information from OMDB
 
 var OMDB = function () {
+  if(finalInput===''){
+    finalInput = "Mr. Nobody";
+  }
   var queryOMDB = "http://www.omdbapi.com/?t=" + finalInput + "&y=&plot=short&apikey=trilogy";
 
   // console.log(queryOMDB);
@@ -67,9 +91,8 @@ var bandsInTown = function () {
 
   axios.get(queryBand).then(
     function (response) {
-      console.log(response);
-      for(var i = 0; i < response.data.length; i++){
-        console.log("\n")
+      // console.log(response);
+      for (var i = 0; i < response.data.length; i++) {
         console.log("\n-----------CONCERT INFO----------------\n")
         console.log("Venue: " + response.data[i].venue.name);
         console.log("Location: " + response.data[i].venue.city + ", " + response.data[i].venue.region);
@@ -78,8 +101,15 @@ var bandsInTown = function () {
       }
     }
   )
-
 }
+
+4. `node liri.js do-what-it-says`
+
+   * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
+
+     * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
+
+     * Edit the text in random.txt to test out the feature for movie-this and concert-this.
 
 if (commandLine == "movie-this") {
   OMDB();
@@ -87,6 +117,6 @@ if (commandLine == "movie-this") {
   Spotify();
 } else if (commandLine == "concert-this") {
   bandsInTown()
-} else {
+} else if (commandLine == "do-what-it-says") {
   console.log("do what it says");
 }
