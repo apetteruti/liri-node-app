@@ -64,7 +64,6 @@ var Spotify = function () {
 }
 
 //OMDB - create a function to get information from OMDB
-
 var OMDB = function () {
   if (finalInput === '') {
     finalInput = "Mr. Nobody";
@@ -110,7 +109,6 @@ var bandsInTown = function () {
 }
 
 //FS Readfile - runs the associated read file.
-
 var doWhatItSays = function () {
 
   fs.readFile("random.txt", "utf8", function (error, data) {
@@ -119,16 +117,31 @@ var doWhatItSays = function () {
     }
 
     console.log(data);
+    //collect the command line from the read me and put it in var commandLine
+    // commandLine = data;
+    // console.log(commandLine);
+    doArray = data.split(",");
+    // console.log(doArray);
+    for(var i = 0; i < doArray.length; i++){
+      commandLine = doArray[0];
+      // console.log(doCommand);
+      //collect the input and put it in first Input
+      finalInput = doArray [1];
+      // console.log(doInput);
+    }
+    //console log the whole thing and then call the function
+    console.log("node liri.js " + commandLine +" " + finalInput);
+    if (commandLine == "movie-this") {
+      OMDB();
+    } else if (commandLine == "spotify-this-song") {
+      Spotify();
+    } else if (commandLine == "concert-this") {
+      bandsInTown()
+    } 
 
   })
 }
-// 4. `node liri.js do-what-it-says`
 
-//    * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
-
-//      * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
-
-//      * Edit the text in random.txt to test out the feature for movie-this and concert-this.
 
 if (commandLine == "movie-this") {
   OMDB();
