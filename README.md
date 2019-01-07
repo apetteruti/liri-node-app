@@ -40,10 +40,10 @@ If the user does not enter a movie name, then the application will return "Mr. N
 
 The bandsInTown doWhatItSays function establishes a connection with the Bands In Town API to return venue name, venue city and state, and date of the concert when a user enters an arist name. The npm package, Moment, establishes a format for the date so that it appears as MM/YYYY.
 
-If the user does not enter an artist's name, the 
+If the user does not enter an artist's name, the application will return concert information for Lyle Lovett.
 
 *Demonstration Screenshot* - https://docs.google.com/document/d/1pgzp-F1CstKGfAaAfdauMUOP4QKs2-egveFZBMx5IY8/edit?usp=sharing
-*Demonstration Screenshot (BLANK ENTRY)* - <<This is giving me an error at the time I'm writing this. There are no specific instructions for what to do with blank errors for Bands In Town>>
+*Demonstration Screenshot (BLANK ENTRY)* - <<There are no specific instructions for what to do with blank errors for Bands In Town, so I logged Lyle Lovett>>
 
 #doWhatItSays
 The doWhatItSays function will automatically send the command line and input from the random.txt file through the attendant function. For example, spotify-this-song in the text file will automatically run the song that is also in the file. 

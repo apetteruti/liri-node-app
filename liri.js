@@ -75,7 +75,7 @@ var OMDB = function () {
   axios.get(queryOMDB).then(
     function (response) {
       console.log("\n")
-      console.log("/n-----------MOVIE INFO----------------\n")
+      console.log("\n-----------MOVIE INFO----------------\n")
       console.log("Title: " + response.data.Title);
       console.log("Release Year: " + response.data.Year);
       console.log("IMDB Rating: " + response.data.imdbRating);
@@ -91,12 +91,17 @@ var OMDB = function () {
 //BandsinTown - create a function to pull concert info from bandsInTown
 var bandsInTown = function () {
 
+  if (finalInput === '') {
+    finalInput = "Lyle Lovett";
+  }
+
   var queryBand = "https://rest.bandsintown.com/artists/" + finalInput + "/events?app_id=codingbootcamp&limit=1";
-  console.log(queryBand);
+  // console.log(queryBand);
 
   axios.get(queryBand).then(
     function (response) {
       // console.log(response);
+      console.log(finalInput);
       for (var i = 0; i < response.data.length; i++) {
         console.log("\n-----------CONCERT INFO----------------\n")
         console.log("Venue: " + response.data[i].venue.name);
@@ -126,7 +131,7 @@ var doWhatItSays = function () {
       commandLine = doArray[0];
       // console.log(doCommand);
       //collect the input and put it in first Input
-      finalInput = doArray [1];
+      var finalInput = doArray [1];
       // console.log(doInput);
     }
     //console log the whole thing and then call the function
