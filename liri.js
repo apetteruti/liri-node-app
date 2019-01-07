@@ -1,3 +1,4 @@
+//set up the npm stuff
 require("dotenv").config();
 
 var keys = require("./keys.js");
@@ -9,6 +10,9 @@ var spotify = new Spotify(keys.spotify);
 
 var axios = require("axios");
 
+var fs = require("fs");
+
+//set up variables to collect user inputs
 var commandLine = process.argv[2]; //variable to take in the command
 var firstInput = process.argv; //variable to take in whatever is entered after the command
 var array = []; //create an array from the firstInput so that it can be separated out into a word
@@ -29,7 +33,7 @@ var finalInput = array.join(" ");
 //Spotify - create a function to collect information from Spotify
 var Spotify = function () {
 
-  if(finalInput === ""){
+  if (finalInput === "") {
     finalInput = "The Sign Ace of Base";
   }
 
@@ -47,10 +51,10 @@ var Spotify = function () {
       for (var i = 0; i < response.tracks.items.length; i++) {
         // console.log(response.tracks.items[i].album);
         for (var j = 0; j < response.tracks.items[i].artists.length; j++)
-        console.log("Artist: " + response.tracks.items[i].artists[j].name); //Artist name
-        console.log("Song name: " + response.tracks.items[i].name);//Song name
-        console.log("Preview of Song: " + response.tracks.items[i].preview_url);//Preview of song
-        console.log("Album name: " + response.tracks.items[i].album.name);//Album name      
+          console.log("Artist: " + response.tracks.items[i].artists[j].name); //Artist name
+        console.log("Song name: " + response.tracks.items[i].name); //Song name
+        console.log("Preview of Song: " + response.tracks.items[i].preview_url); //Preview of song
+        console.log("Album name: " + response.tracks.items[i].album.name); //Album name      
       }
     })
     .catch(function (err) {
@@ -62,7 +66,7 @@ var Spotify = function () {
 //OMDB - create a function to get information from OMDB
 
 var OMDB = function () {
-  if(finalInput===''){
+  if (finalInput === '') {
     finalInput = "Mr. Nobody";
   }
   var queryOMDB = "http://www.omdbapi.com/?t=" + finalInput + "&y=&plot=short&apikey=trilogy";
@@ -85,7 +89,9 @@ var OMDB = function () {
   );
 }
 
+//BandsinTown - create a function to pull concert info from bandsInTown
 var bandsInTown = function () {
+
   var queryBand = "https://rest.bandsintown.com/artists/" + finalInput + "/events?app_id=codingbootcamp&limit=1";
   console.log(queryBand);
 
@@ -103,13 +109,26 @@ var bandsInTown = function () {
   )
 }
 
-4. `node liri.js do-what-it-says`
+//FS Readfile - runs the associated read file.
 
-   * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
+var doWhatItSays = function () {
 
-     * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
+  fs.readFile("random.txt", "utf8", function (error, data) {
+    if (error) {
+      return console.log(error);
+    }
 
-     * Edit the text in random.txt to test out the feature for movie-this and concert-this.
+    console.log(data);
+
+  })
+}
+// 4. `node liri.js do-what-it-says`
+
+//    * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
+
+//      * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
+
+//      * Edit the text in random.txt to test out the feature for movie-this and concert-this.
 
 if (commandLine == "movie-this") {
   OMDB();
@@ -118,5 +137,5 @@ if (commandLine == "movie-this") {
 } else if (commandLine == "concert-this") {
   bandsInTown()
 } else if (commandLine == "do-what-it-says") {
-  console.log("do what it says");
+  doWhatItSays();
 }
