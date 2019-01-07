@@ -141,19 +141,40 @@ var doWhatItSays = function () {
     } else if (commandLine == "spotify-this-song") {
       Spotify();
     } else if (commandLine == "concert-this") {
-      bandsInTown()
+      bandsInTown();
     } 
 
   })
 }
 
-
-if (commandLine == "movie-this") {
+//Switch to change the types of commandLine to run the appropriate functions.
+switch(commandLine){
+  case "movie-this":
   OMDB();
-} else if (commandLine == "spotify-this-song") {
+  break;
+  
+  case "spotify-this-song":
   Spotify();
-} else if (commandLine == "concert-this") {
-  bandsInTown()
-} else if (commandLine == "do-what-it-says") {
+  break;
+
+  case "concert-this":
+  bandsInTown();
+  break;
+
+  case "do-what-it-says":
   doWhatItSays();
+  break;
+
+  default:
+  console.log ("No value found. Please try again.")
 }
+
+// if (commandLine == "movie-this") {
+//   OMDB();
+// } else if (commandLine == "spotify-this-song") {
+//   Spotify();
+// } else if (commandLine == "concert-this") {
+//   bandsInTown();
+// } else if (commandLine == "do-what-it-says") {
+//   doWhatItSays();
+// }

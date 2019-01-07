@@ -28,7 +28,7 @@ If the user does not enter a song, then the application will return "The Sign" b
 
 *Demonstration Screenshot* - https://docs.google.com/document/d/1mgsffHXCn4TvNmoeSj_UpJu0wlwmaGwcbrg29Z6NBzI/edit?usp=sharing
 
-#OMDB
+##OMDB
 
 The OMDB function estabilishes a connection with the Online Movie Database to return movie title, year, IMDB Rating, Rotten Tomatoes (Metascore) rating, country, language, plot, and actors when a user enters a movie name. 
 
@@ -36,7 +36,7 @@ If the user does not enter a movie name, then the application will return "Mr. N
 
 *Demonstration Screenshot* - https://docs.google.com/document/d/1hMpoGDahaTUNgSnRXluJO6HlKEOuyJ0m86XxrjZrWNc/edit?usp=sharing
 
-#BandsInTown
+##BandsInTown
 
 The bandsInTown doWhatItSays function establishes a connection with the Bands In Town API to return venue name, venue city and state, and date of the concert when a user enters an arist name. The npm package, Moment, establishes a format for the date so that it appears as MM/YYYY.
 
@@ -45,9 +45,12 @@ If the user does not enter an artist's name, the application will return concert
 *Demonstration Screenshot* - https://docs.google.com/document/d/1pgzp-F1CstKGfAaAfdauMUOP4QKs2-egveFZBMx5IY8/edit?usp=sharing
 *Demonstration Screenshot (BLANK ENTRY)* - <<There are no specific instructions for what to do with blank errors for Bands In Town, so I logged Lyle Lovett>>
 
-#doWhatItSays
+##doWhatItSays
 The doWhatItSays function will automatically send the command line and input from the random.txt file through the attendant function. For example, spotify-this-song in the text file will automatically run the song that is also in the file. 
 
 *Demonstration Screenshot (includes OMDB and Spotify)* - https://docs.google.com/document/d/1IqsknsLhuMa6X7b5cigL6Rtp_0l4tJ541b9f4kcGzU0/edit?usp=sharing
 
 ****At the time of this edit, concert-this is throwing an error for the doWhatItSays function****
+
+##Final Note
+Switch case switches between the different types of command lines to run the appropriate and matching function.
