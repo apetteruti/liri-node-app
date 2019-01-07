@@ -3,6 +3,14 @@
 #Introduction
 The liri-node-app returns concert information from actively touring artists, artist information for specified songs, and movie information for specified movies. Below is a detailed description of how each component of the application works. 
 
+##Using the Application
+In order to use this application, you must enter the following in your command line in Git to access the requisite information:
+
+- Spotify (song information): node.liri.js spotify-this-song <song title here>
+- OMBD (movie information): node.liri.js movie-this <movie name here>
+- Bands In Town (concert information): node.liri.js concert-this <artist name here>
+- Do What It Says (automatic information return): node.liri.js do-what-it-says
+
 ##Establishing variables
 The application establishes two variables:
 
@@ -41,3 +49,5 @@ If the user does not enter an artist's name, the
 The doWhatItSays function will automatically send the command line and input from the random.txt file through the attendant function. For example, spotify-this-song in the text file will automatically run the song that is also in the file. 
 
 *Demonstration Screenshot (includes OMDB and Spotify)* - https://docs.google.com/document/d/1IqsknsLhuMa6X7b5cigL6Rtp_0l4tJ541b9f4kcGzU0/edit?usp=sharing
+
+****At the time of this edit, concert-this is throwing an error for the doWhatItSays function****
