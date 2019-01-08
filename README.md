@@ -49,7 +49,7 @@ If the user does not enter an artist's name, the application will return concert
 The doWhatItSays function will automatically send the command line and input from the random.txt file through the attendant function. For example, spotify-this-song in the text file will automatically run the song that is also in the file. 
 
 *Demonstration Screenshot* - https://docs.google.com/document/d/1IqsknsLhuMa6X7b5cigL6Rtp_0l4tJ541b9f4kcGzU0/edit?usp=sharing
- ->At the time of this submission, I was getting errors for "concert-this" in the random.txt file<-
+
 
 ##Final Note
 Switch case switches between the different types of command lines to run the appropriate and matching function.

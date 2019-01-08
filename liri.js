@@ -136,6 +136,8 @@ var doWhatItSays = function () {
       // console.log(doCommand);
       //collect the input and put it in first Input
       finalInput = doArray [1];
+      var strWithOutQuotes= finalInput.replace(/"/g, '');
+      // console.log (strWithOutQuotes);
       // console.log(doInput);
     }
     //console log the whole thing and then call the function
@@ -145,6 +147,7 @@ var doWhatItSays = function () {
     } else if (commandLine == "spotify-this-song") {
       Spotify();
     } else if (commandLine == "concert-this") {
+      finalInput = strWithOutQuotes;
       bandsInTown();
     } 
   })
