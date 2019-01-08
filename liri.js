@@ -91,11 +91,13 @@ var OMDB = function () {
 //BandsinTown - create a function to pull concert info from bandsInTown
 var bandsInTown = function () {
 
+  console.log(finalInput);
+
   if (finalInput === '') {
     finalInput = "Lyle Lovett";
   }
 
-  var queryBand = "https://rest.bandsintown.com/artists/" + finalInput + "/events?app_id=codingbootcamp&limit=1";
+  var queryBand = "https://rest.bandsintown.com/artists/" + finalInput + "/events?app_id=codingbootcamp";
   // console.log(queryBand);
 
   axios.get(queryBand).then(
@@ -111,6 +113,9 @@ var bandsInTown = function () {
       }
     }
   )
+  .catch(function (err) {
+    console.log(err);
+  });
 }
 
 //FS Readfile - runs the associated read file.
@@ -122,8 +127,8 @@ var doWhatItSays = function () {
     }
 
     console.log(data);
-    //collect the command line from the read me and put it in var commandLine
     // commandLine = data;
+    //collect the command line from the read me and put it in var commandLine
     // console.log(commandLine);
     doArray = data.split(",");
     // console.log(doArray);
@@ -131,7 +136,7 @@ var doWhatItSays = function () {
       commandLine = doArray[0];
       // console.log(doCommand);
       //collect the input and put it in first Input
-      var finalInput = doArray [1];
+      finalInput = doArray [1];
       // console.log(doInput);
     }
     //console log the whole thing and then call the function
@@ -144,6 +149,19 @@ var doWhatItSays = function () {
       bandsInTown();
     } 
 
+    // switch(commandLine){
+    //   case "movie-this":
+    //   OMDB();
+    //   break;
+      
+    //   case "spotify-this-song":
+    //   Spotify();
+    //   break;
+
+    //   case "concert-this":
+    //   bandsInTown();
+    //   break;
+    // }
   })
 }
 
