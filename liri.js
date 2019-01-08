@@ -91,7 +91,6 @@ var OMDB = function () {
 //BandsinTown - create a function to pull concert info from bandsInTown
 var bandsInTown = function () {
 
-  console.log(finalInput);
 
   if (finalInput === '') {
     finalInput = "Lyle Lovett";
@@ -148,20 +147,6 @@ var doWhatItSays = function () {
     } else if (commandLine == "concert-this") {
       bandsInTown();
     } 
-
-    // switch(commandLine){
-    //   case "movie-this":
-    //   OMDB();
-    //   break;
-      
-    //   case "spotify-this-song":
-    //   Spotify();
-    //   break;
-
-    //   case "concert-this":
-    //   bandsInTown();
-    //   break;
-    // }
   })
 }
 
